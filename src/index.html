@@ -92,11 +92,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            console.log('Document is ready');
             const display = document.getElementById('calc-display');
             const buttons = document.getElementsByClassName('btn');
 
             let currentValue = '';
+
+            function evaluateResult() {
+                const result = eval(currentValue);
+                currentValue = result.toString();
+                display.value = currentValue;
+            }
 
             for (let i = 0; i < buttons.length; i++) {
                 const button = buttons[i];
@@ -106,6 +111,8 @@
                     if (value == "AC") {
                         currentValue = "";
                         display.value = currentValue;
+                    } else if (value == '=') {
+                        evaluateResult();
                     } else {
                         currentValue += value;
                         console.log('currentValue:', currentValue)
