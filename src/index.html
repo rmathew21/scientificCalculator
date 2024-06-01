@@ -98,7 +98,10 @@
             let currentValue = '';
 
             function evaluateResult() {
-                const result = eval(currentValue);
+                console.log('currentValue:', currentValue)
+                const convertedValue = currentValue.replace("×", "*")
+                console.log('convertedValue', convertedValue)
+                const result = eval(convertedValue);
                 currentValue = result.toString();
                 display.value = currentValue;
             }
@@ -115,7 +118,7 @@
                         evaluateResult();
                     } else {
                         currentValue += value;
-                        console.log('currentValue:', currentValue)
+                        // console.log('currentValue:', currentValue)
                         display.value = currentValue;
                     }
 
